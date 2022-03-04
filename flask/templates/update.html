@@ -1,32 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Update Book</title>
-    </head>
-    <body>
-        <div class="body">
-            
+{% extends 'base.html' %}
 
-            <div class="bkcont">
-                <h2>Update Book</h2>
-                <hr />
+{% block title %} Update {% endblock %}
 
-                <form class="form" action="" method="POST">
-                    <label>Title</label>
-                    <input type="text" name="title" value="" required />
-                    <label>Author</label>
-                    <input type="text" name="author" value="" required />
-                    <label>Description</label>
-                    <input type="text" name="summary" value="" required />
-                    <label>Body</label>
-                    <textarea rows="6" name="body" required>body of the page</textarea>
-                    <button type="submit" name="submit">Update</button>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+{% block body %}
+
+    <div class="bkcont">
+        <h2>Update Book</h2>
+        <hr />
+
+        <form class="form" action="" method="POST">
+            <label>Title</label>
+            <input type="text" name="title" value="" required />
+            <label>Author</label>
+            <input type="text" name="author" value="" required />
+            <label>Description</label>
+            <input type="text" name="summary" value="" required />
+            <label>Body</label>
+            <textarea rows="6" name="body" required>body of the page</textarea>
+            <button type="submit" name="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}
