@@ -1,28 +1,34 @@
-from distutils.debug import DEBUG
-import http
-from flask import Flask, render_template, url_for
+from multiprocessing import Manager
+from flask import Flask
+import sqlalchemy
+from views import *
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'lksnlskndlknvlskndlvknew2382y983hwfo0923u'
+app.debug = True
+
+# manager = Manager(app)
+# db = sqlalchemy(app)
 
 @app.route('/')
-def index():
-    return render_template('home.html')
+def home():
+    return home_view()
 
-@app.route('/add')
+@app.route('/add', methods=['POST', 'GET'])
 def add():
-    return render_template('add.html')
+    return add_view()
 
 @app.route('/book/<int:id>')
 def book(id):
-    return render_template('book.html')
+    return book_view(id)
 
 @app.route('/update/<int:id>')
 def update(id):
-    return render_template('update.html')
+    return update_view(id)
 
 @app.errorhandler(404)
 def page404(error):
-    return render_template('page404.html')
+    return page404_view(error)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
