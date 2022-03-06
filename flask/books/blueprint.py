@@ -1,12 +1,14 @@
 from flask import Blueprint
-from views import *
+from books.views import *
+from models import Book
 
 books = Blueprint('books', __name__, template_folder='templates')
 
 
 @books.route('/')
 def home():
-    return home_view()
+    b = Book.query.all()
+    return render_template('home.html')
 
 @books.route('/add', methods=['POST', 'GET'])
 def add():

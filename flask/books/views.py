@@ -1,9 +1,12 @@
 from flask import render_template, request
 from models import Book
+from flask import Blueprint
+
+books = Blueprint('books', __name__, template_folder='templates')
 
 def home_view():
-    books = Book.query.all()
-    return render_template('home.html', books=books)
+    Book.query.all()
+    return render_template('home.html')
 
 def add_view():
     if request.method == 'POST':
