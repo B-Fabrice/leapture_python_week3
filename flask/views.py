@@ -1,7 +1,9 @@
 from flask import render_template, request
+from models import Book
 
 def home_view():
-    return render_template('home.html')
+    books = Book.query.all()
+    return render_template('home.html', books=books)
 
 def add_view():
     if request.method == 'POST':
